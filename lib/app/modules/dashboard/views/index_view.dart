@@ -11,10 +11,8 @@ class IndexView extends GetView {
   const IndexView({super.key});
   @override
   Widget build(BuildContext context) {
-    // Menginisialisasi controller untuk Dashboard menggunakan GetX
+
     DashboardController controller = Get.put(DashboardController());
-    
-    // Membuat ScrollController untuk mengontrol scroll pada ListView
     final ScrollController scrollController = ScrollController();
     
     return Scaffold(
@@ -78,7 +76,8 @@ class IndexView extends GetView {
                       const SizedBox(height: 16), // Jarak antara elemen
                       // Menampilkan judul event
                       Text(
-                        'title',
+                         snapshot.data!.events![index].name
+                        .toString(),
                         style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold, // Membuat teks menjadi tebal
@@ -87,7 +86,8 @@ class IndexView extends GetView {
                       const SizedBox(height: 8), // Jarak antara elemen
                       // Menampilkan deskripsi event
                       Text(
-                        'description',
+                        snapshot.data!.events![index].description
+                        .toString(),
                         style: const TextStyle(
                           fontSize: 16,
                           color: Colors.grey, // Warna teks abu-abu
@@ -104,7 +104,8 @@ class IndexView extends GetView {
                           const SizedBox(width: 8), // Jarak antara ikon dan teks
                           Expanded(
                             child: Text(
-                              'location', // Lokasi event
+                          snapshot.data!.events![index].location
+                          .toString(), // Lokasi event
                               style: const TextStyle(
                                 fontSize: 16,
                                 color: Colors.black, // Warna teks hitam
@@ -128,5 +129,6 @@ class IndexView extends GetView {
       ),
     );
   }
-
 }
+
+
